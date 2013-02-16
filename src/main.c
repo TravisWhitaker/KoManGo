@@ -3,7 +3,7 @@
 #include <string.h>
 #include <ncurses.h>
 
-#include <util.h>
+#include <screen.h>
 
 int main()
 {
@@ -23,6 +23,6 @@ int main()
 		}
 		counter++;
 	}
-	goodgamepeaceout();
+	ggpo();
 	return 0;
 }
