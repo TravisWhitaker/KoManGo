@@ -1,19 +1,4 @@
-<<<<<<< HEAD
-#include <stdio.h>
-#include <stdlib.h>
-#include <ncurses.h>
-
-#include <screen.h>
-
-/*
-┌─┬─┬─┬─┐   12223
-├─●─○─★─┤	4BA06
-├─┼─○─┼─┤	45A56
-├─●─┼─★─┤	4B506
-└─┴─┴─┴─┘	78889
-=======
 #include <wchar.h>
->>>>>>> Board dickery
 
 /*
 ┌─┬─┐   TL T TR
@@ -73,12 +58,6 @@ wchar_t *printBoard(char *board)
 	wchar_t STAR = "\u2605";
 
 
-<<<<<<< HEAD
-board[0][0] = 1 		//Top Left corner
-board[0][DIM-1] = 3 	//Top right corner
-board[DIM-1][0] = 7 	//Bottom left corner
-board[DIM-1][DIM-1] = 9 //Bottom right corner
-=======
 	wchar_t returnArray[DIM][2*DIM-1];
 	for(r = 0; r < DIM; r++)
 	{
@@ -98,4 +77,3 @@ board[DIM-1][DIM-1] = 9 //Bottom right corner
 
 	return returnArray;
 }
->>>>>>> Board dickery
