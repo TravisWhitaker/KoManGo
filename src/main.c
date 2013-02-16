@@ -7,22 +7,7 @@
 
 int main()
 {
-	initialize();
-	int counter = 0;
-	int ch;
-	while(counter<10)
-	{
-		ch = getch();
-		if(ch == '\n')
-		{
-			printw("ENTER\n");
-		}
-		else
-		{
-			printw("Ya bimbooo %c\n",ch);
-		}
-		counter++;
-	}
+	initscreen();
 	ggpo();
 	return 0;
 }

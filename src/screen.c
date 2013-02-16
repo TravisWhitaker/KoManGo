@@ -5,10 +5,8 @@
 
 int screenrows;
 int screencols;
-//int *screenrowp;
-//int *screencolp;
 
-void initialize()
+void initscreen()
 {
 	initscr();
 	raw();

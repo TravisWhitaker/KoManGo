@@ -1,3 +1,9 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <ncurses.h>
+
+#include <screen.h>
+
 /*
 ┌─┬─┬─┬─┐   12223
 ├─●─○─★─┤	4BA06
