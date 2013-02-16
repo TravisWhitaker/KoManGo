@@ -6,9 +6,15 @@
 
 #include <screen.h>
 
+int DIM = 19;
+
 int main()
 {
-	initscreen();
+	initScreen();
+	wchar_t board[DIM][DIM];
+	board = initBoard(DIM);
+	wchar_t printableBoard[DIM][(2*DIM)-1];
+	printableBoard = printBoard(DIM,board);
 	ggpo();
 	return 0;
 }

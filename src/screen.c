@@ -4,16 +4,16 @@
 #include <ncurses.h>
 #include <wchar.h>
 
-int screenrows;
-int screencols;
+int screenRows;
+int screenCols;
 
-void initscreen()
+void initScreen()
 {
 	initscr();
 	raw();
 	noecho();
 	keypad(stdscr,TRUE);
-	getmaxyx(stdscr,screenrows,screencols);
+	getmaxyx(stdscr,screenRows,screenCols);
 	return;
 }
 
