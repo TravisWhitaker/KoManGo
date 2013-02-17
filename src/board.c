@@ -1,4 +1,5 @@
 #include <wchar.h>
+#include <main.h>
 
 /*
 ┌─┬─┐   TL T TR
@@ -10,57 +11,55 @@
 ★ STAR
 */
 
-wchar_t TL = '\u250C';
-wchar_t T = '\u252C';
-wchar_t TR = '\u2510';
-wchar_t L = '\u251C';
-wchar_t M = '\u253C';
-wchar_t R = '\u2524';
-wchar_t BL = '\u2514';
-wchar_t B = '\u2534';
-wchar_t BR = '\u2518';
-wchar_t DASH = '\u2500';
-wchar_t BLACK = '\u25CF';
-wchar_t WHITE = '\u25CB';
-wchar_t STAR = '\u2605';
+wchar_t TL =  0x250C ;
+wchar_t T =  0x252C ;
+wchar_t TR =  0x2510 ;
+wchar_t L =  0x251C ;
+wchar_t M =  0x253C ;
+wchar_t R =  0x2524 ;
+wchar_t BL =  0x2514 ;
+wchar_t B =  0x2534 ;
+wchar_t BR =  0x2518 ;
+wchar_t DASH =  0x2500 ;
+wchar_t BLACK =  0x25CF ;
+wchar_t WHITE =  0x25CB ;
+wchar_t STAR =  0x2605 ;
 
-wchar_t *initBoard(int DIM)
+void initLogicBoard()
 {
-	wchar_t board[DIM][DIM];
 	for(int r = 1; r < DIM-1; r++) //All the intersections
 	{
 		for(int c = 1; c < DIM-1; c++)	
-			board[r][c] = M;
+			logicBoard[r][c] = M;
 	}
 
 	for(int c = 0; c < DIM; c++) 
 	{
-		board[0][c] = T;		// Top tiles
-		board[DIM-1][c] = B;	//Bottom tiles
+		logicBoard[0][c] = T;		// Top tiles
+		logicBoard[DIM-1][c] = B;	//Bottom tiles
 	}
 
 	for(int r = 0; r < DIM; r++)
 	{
-		board[r][0] = L; 	//Left tiles
-		board[r][DIM-1] = R; //Right tiles
+		logicBoard[r][0] = L; 	//Left tiles
+		logicBoard[r][DIM-1] = R; //Right tiles
 	}
 
-	board[0][0] = TL; 		//Top Left corner
-	board[0][DIM-1] = TR; 	//Top right corner
-	board[DIM-1][0] = BL; 	//Bottom left corner
-	board[DIM-1][DIM-1] = BR; //Bottom right corner
+	logicBoard[0][0] = TL; 		//Top Left corner
+	logicBoard[0][DIM-1] = TR; 	//Top right corner
+	logicBoard[DIM-1][0] = BL; 	//Bottom left corner
+	logicBoard[DIM-1][DIM-1] = BR; //Bottom right corner
 
-	return board;
+	return;
 }
 
-wchar_t *printBoard(int DIM, wchar_t *board)
+void updatePrintBoard()
 {
-	wchar_t returnArray[DIM][2*DIM-1];
 	for(int r = 0; r < DIM; r++)
 	{
 		for(int c = 0; c < 2*DIM-1; c++)
 		{
-			returnArray[r][c] = DASH; //Initialize the return array with dashes
+			printableBoard[r][c] = DASH; //Initialize the return array with dashes
 		}
 	}
 
@@ -68,9 +67,9 @@ wchar_t *printBoard(int DIM, wchar_t *board)
 	{
 		for(int c = 0; c < DIM; c++)	
 		{
-			returnArray[r][c*2] = board[r][c]; //Populate the return array with values from board
+			printableBoard[r][c*2] = logicBoard[r][c]; //Populate the return array with values from board
 		}
 	}
 
-	return returnArray;
+	return;
 }

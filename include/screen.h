@@ -4,7 +4,7 @@
 int screenrows;
 int screencols;
 
-void initialize();
+void initScreen();
 void ggpo();
 
 #endif

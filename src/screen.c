@@ -3,9 +3,7 @@
 #include <string.h>
 #include <ncurses.h>
 #include <wchar.h>
-
-int screenRows;
-int screenCols;
+#include <main.h>
 
 void initScreen()
 {

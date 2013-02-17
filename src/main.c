@@ -5,16 +5,20 @@
 #include <wchar.h>
 
 #include <screen.h>
-
-int DIM = 19;
+#include <board.h>
 
 int main()
 {
-	initScreen();
-	wchar_t board[DIM][DIM];
-	board = initBoard(DIM);
+	int screenRows;
+	int screenCols;
+
+	int DIM = 19;
+	wchar_t logicBoard[DIM][DIM];
 	wchar_t printableBoard[DIM][(2*DIM)-1];
-	printableBoard = printBoard(DIM,board);
+
+	initScreen();
+	initLogicBoard();
+	updatePrintBoard();
 	ggpo();
 	return 0;
 }
