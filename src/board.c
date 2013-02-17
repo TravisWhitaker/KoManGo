@@ -25,7 +25,7 @@ wchar_t BLACK =  0x25CF ;
 wchar_t WHITE =  0x25CB ;
 wchar_t STAR =  0x2605 ;
 
-void initLogicBoard()
+void initLogicBoard(int DIM)
 {
 	for(int r = 1; r < DIM-1; r++) //All the intersections
 	{
@@ -47,7 +47,7 @@ void initLogicBoard()
 
 	logicBoard[0][0] = TL; 		//Top Left corner
 	logicBoard[0][DIM-1] = TR; 	//Top right corner
-	logicBoard[DIM-1][0] = BL; 	//Bottom left corner
+	logicBoard[18][0] = BL; 	//Bottom left corner
 	logicBoard[DIM-1][DIM-1] = BR; //Bottom right corner
 
 	return;

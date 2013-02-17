@@ -17,7 +17,7 @@ int main()
 	wchar_t printableBoard[DIM][(2*DIM)-1];
 
 	initScreen();
-	initLogicBoard();
+	initLogicBoard(DIM);
 	updatePrintBoard();
 	ggpo();
 	return 0;
