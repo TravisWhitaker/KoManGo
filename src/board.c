@@ -27,9 +27,9 @@ wchar_t STAR = '\u2605';
 wchar_t *initBoard(int DIM)
 {
 	wchar_t board[DIM][DIM];
-	for(int r = 0; r < DIM; r++) //Everything is intersections
+	for(int r = 1; r < DIM-1; r++) //All the intersections
 	{
-		for(int c = 0; c < DIM; c++)	
+		for(int c = 1; c < DIM-1; c++)	
 			board[r][c] = M;
 	}
 
