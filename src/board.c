@@ -39,7 +39,7 @@ wchar_t *initBoard(int DIM)
 		board[DIM-1][c] = B;	//Bottom tiles
 	}
 
-	for(int r = 0; c < DIM; c++)
+	for(int r = 0; r < DIM; r++)
 	{
 		board[r][0] = L; 	//Left tiles
 		board[r][DIM-1] = R; //Right tiles
