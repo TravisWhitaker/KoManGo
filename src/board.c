@@ -73,3 +73,50 @@ void updatePrintBoard()
 
 	return;
 }
+
+
+void printBoard()
+{
+	for(int r = 0;r < DIM;r++)
+	{
+		printf("%s\n",printableBoard[r])
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
