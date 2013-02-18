@@ -6,19 +6,17 @@
 
 #include <screen.h>
 #include <board.h>
+#include <main.h>
 
 int main()
 {
 	int screenRows;
 	int screenCols;
 
-	int DIM = 19;
-	wchar_t logicBoard[DIM][DIM];
-	wchar_t printableBoard[DIM][(2*DIM)-1];
+	const int DIM = 19;
 
-	initScreen();
-	initLogicBoard(DIM);
-	updatePrintBoard();
-	ggpo();
+	board gameBoard = initBoard(DIM);
+	printBoard(gameBoard);
+
 	return 0;
 }

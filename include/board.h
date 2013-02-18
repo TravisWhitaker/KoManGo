@@ -1,21 +1,28 @@
 #ifndef BOARD
 #define BOARD
 
-wchar_t TL;
-wchar_t T;
-wchar_t TR;
-wchar_t L;
-wchar_t M;
-wchar_t R;
-wchar_t BL;
-wchar_t B;
-wchar_t BR;
-wchar_t DASH;
-wchar_t BLACK;
-wchar_t WHITE;
-wchar_t STAR;
+typedef struct
+{
+	int DIM;
+	char *grid;
+	char *rows[19];
+} board;
 
-wchar_t initLogicBoard();
-wchar_t updatePrintBoard();
+char* TL;
+char* T;
+char* TR;
+char* L;
+char* M;
+char* R;
+char* BL;
+char* B;
+char* BR;
+char* DASH;
+char* BLACK;
+char* WHITE;
+char* STAR;
+
+board initBoard();
+void printBoard();
 
 #endif

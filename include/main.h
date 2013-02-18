@@ -1,11 +1,12 @@
 #ifndef MAIN
-#define MAIM
+#define MAIN
+
+#include <board.h>
 
 int screenRows;
 int screenCols;
 
 int DIM;
-wchar_t logicBoard[19][19];
-wchar_t printableBoard[19][40];
+board gameBoard;
 
 #endif

@@ -1,5 +1,9 @@
-#include <wchar.h>
+#include <stdio.h>
+#include <stdlib.h>
+
 #include <main.h>
+#include <board.h>
+#include <screen.h>
 
 /*
 ┌─┬─┐   TL T TR
@@ -11,48 +15,125 @@
 ★ STAR
 */
 
-wchar_t TL =  0x250C ;
-wchar_t T =  0x252C ;
-wchar_t TR =  0x2510 ;
-wchar_t L =  0x251C ;
-wchar_t M =  0x253C ;
-wchar_t R =  0x2524 ;
-wchar_t BL =  0x2514 ;
-wchar_t B =  0x2534 ;
-wchar_t BR =  0x2518 ;
-wchar_t DASH =  0x2500 ;
-wchar_t BLACK =  0x25CF ;
-wchar_t WHITE =  0x25CB ;
-wchar_t STAR =  0x2605 ;
+char *TL =  "\u250C" ;
+char *T =  "\u252C" ;
+char *TR =  "\u2510" ;
+char *L =  "\u251C" ;
+char *M =  "\u253C" ;
+char *R =  "\u2524" ;
+char *BL =  "\u2514" ;
+char *B =  "\u2534" ;
+char *BR =  "\u2518" ;
+char *DASH =  "\u2500" ;
+char *BLACK =  "\u25CF" ;
+char *WHITE =  "\u25CB" ;
+char *STAR =  "\u2605" ;
 
-void initLogicBoard(int DIM)
+board initBoard(int dim)
 {
-	for(int r = 1; r < DIM-1; r++) //All the intersections
+	const int DIM = dim;
+	const int size = DIM*DIM;
+	board output;
+	output.DIM = DIM;
+	output.grid = malloc((sizeof(char)*size)); //Allocate the memory for the grid.
+	if(output.grid == NULL) //Check to see if the allocation failed.
 	{
-		for(int c = 1; c < DIM-1; c++)	
-			logicBoard[r][c] = M;
+		printf("Malloc failed, ya bimboooo.\n");
+		exit(0);
+	}
+	for(register int i=0; i<size; i++) //Fill the grid with zeros.
+	{
+		*(output.grid+i) = '0';
+	}
+	for(register int i=0; i<DIM; i++) //Initialize our array of row pointers.
+	{
+		output.rows[i] = (output.grid+(DIM*i));
 	}
 
-	for(int c = 0; c < DIM; c++) 
+	return output;
+}
+
+void printBoard(board a)
+{
+	const int DIM = a.DIM;
+	const int size = DIM*DIM;
+	volatile register char spot;
+	for(register int i = 0; i<DIM; i++)
 	{
-		logicBoard[0][c] = T;		// Top tiles
-		logicBoard[DIM-1][c] = B;	//Bottom tiles
+		for(register int j = 0; j<DIM; j++)
+		{
+			spot = *(a.rows[i]+j);
+			if(spot == '0')
+			{
+				if(i == 0)
+				{
+					if(j == 0)
+					{
+						printf("%s",TL);
+					}
+					else if (j == (DIM-1))
+					{
+						printf("%s",TR);
+					}
+					else
+					{
+						printf("%s",T);
+					}
+				}
+				else if(i == (DIM-1))
+				{
+					if(j == 0)
+					{
+						printf("%s",BL);
+					}
+					else if (j == (DIM-1))
+					{
+						printf("%s",BR);
+					}
+					else
+					{
+						printf("%s",B);
+					}
+				}
+				else
+				{
+					if(j == 0)
+					{
+						printf("%s",L);
+					}
+					else if(j == (DIM-1))
+					{
+						printf("%s",R);
+					}
+					else
+					{
+						printf("%s",M);
+					}
+				}
+			}
+			else if (spot == '1')
+			{
+				printf("%s",BLACK);
+			}
+			else if (spot == '2')
+			{
+				printf("%s",WHITE);
+			}
+			else
+			{
+				printf("%c","X");
+			}
+			if(j < (DIM-1))
+			{
+				printf("%s",DASH);
+			}
+		}
+		printf("\n");
 	}
-
-	for(int r = 0; r < DIM; r++)
-	{
-		logicBoard[r][0] = L; 	//Left tiles
-		logicBoard[r][DIM-1] = R; //Right tiles
-	}
-
-	logicBoard[0][0] = TL; 		//Top Left corner
-	logicBoard[0][DIM-1] = TR; 	//Top right corner
-	logicBoard[18][0] = BL; 	//Bottom left corner
-	logicBoard[DIM-1][DIM-1] = BR; //Bottom right corner
-
 	return;
 }
 
+/*
 void updatePrintBoard()
 {
 	for(int r = 0; r < DIM; r++)
@@ -73,8 +154,9 @@ void updatePrintBoard()
 
 	return;
 }
+*/
 
-
+/*
 void printBoard()
 {
 	for(int r = 0;r < DIM;r++)
@@ -82,41 +164,4 @@ void printBoard()
 		printf("%s\n",printableBoard[r])
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+*/

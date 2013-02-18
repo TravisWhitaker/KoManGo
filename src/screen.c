@@ -3,7 +3,10 @@
 #include <string.h>
 #include <ncurses.h>
 #include <wchar.h>
+
 #include <main.h>
+#include <screen.h>
+#include <board.h>
 
 void initScreen()
 {
