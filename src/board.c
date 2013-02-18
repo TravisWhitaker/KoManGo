@@ -54,24 +54,24 @@ board initBoard(int dim)
 	return output;
 }
 
+void logicalCursor(int dim, int screenRows, int screenCols, int* boardRow, int* boardCol)
+{
+	const int DIM = dim;
+	int cursorRow,cursorCol;
+	getyx(stdscr,cursorRow,cursorCol);
+	*boardRow = cursorRow-((screenRows/2)-(DIM/2));
+	*boardCol = ((cursorCol-((screenCols/2)-DIM)+1)/2)-1;
+	return;
+}
+
 void printBoard(board a, int screenRows, int screenCols)
 {
 	int lastRow,lastCol;
 	getyx(stdscr,lastRow,lastCol);
 	const int DIM = a.DIM;
 	const int size = DIM*DIM;
-	int TLRow;
-	int TLCol;
-	if((screenRows < DIM*2) || (screenCols < DIM*2))
-	{
-		TLRow = 2;
-		TLCol = 2;
-	}
-	else
-	{
-		TLRow = (screenRows/2)-((DIM)/2);
-		TLCol = (screenCols/2)-(((2*DIM)-1)/2);
-	}
+	const int TLRow = (screenRows/2)-((DIM)/2);
+	const int TLCol = (screenCols/2)-(((2*DIM)-1)/2);
 	volatile register char spot;
 	for(register int i = 0; i<DIM; i++)
 	{

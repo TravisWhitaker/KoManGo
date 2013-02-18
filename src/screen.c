@@ -49,7 +49,7 @@ int moveCursor(int dim, int screenRows, int screenCols, char key)
 	}
 	else if((key == 's') || (key == 2))
 	{
-		if(currentRow < (screenRows/2)-(DIM/2)+DIM)
+		if(currentRow < (screenRows/2)-(DIM/2)+DIM-1)
 		{
 			move(currentRow+1,currentCol);
 			refresh();
@@ -58,7 +58,7 @@ int moveCursor(int dim, int screenRows, int screenCols, char key)
 	}
 	else if((key == 'd') || (key == 5))
 	{
-		if(currentCol < (screenCols/2)-(((2+DIM)-1)/2)+DIM)
+		if(currentCol < (screenCols/2)-DIM+((DIM*2)-1))
 		{
 			move(currentRow,currentCol+2);
 			refresh();

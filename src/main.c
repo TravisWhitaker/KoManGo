@@ -12,14 +12,14 @@
 int main()
 {
 
-	setlocale(LC_ALL,"");
+	setlocale(LC_ALL,""); //This makes Unicode work.
 
-	int screenRows;
+	int screenRows; //Globally store the number of rows and cols of the screen.
 	int screenCols;
 	int *screenRowsP;
 	int *screenColsP;
 	screenRowsP = &screenRows;
-	screenColsP = &screenCols;
+	screenColsP = &screenCols; //Make pointers to these so other functions can update them.
 
 	const int DIM = 19;
 
@@ -30,6 +30,13 @@ int main()
 	printBoard(gameBoard,screenRows,screenCols);
 	homeCursor(DIM,screenRows,screenCols);
 
+	int boardX;
+	int boardY;
+	int oldX;
+	int oldY;
+
+	logicalCursor(DIM,screenRows,screenCols,&boardX,&boardY);
+
 	while(1)
 	{
 		getmaxyx(stdscr,*screenRowsP,*screenColsP);
@@ -38,7 +45,21 @@ int main()
 		{
 			break;
 		}
+		if(ch == 'r')
+		{
+			getyx(stdscr,oldY,oldX);
+			clear();
+			printBoard(gameBoard,screenRows,screenCols);
+			move(oldY,oldX);
+		}
 		moveCursor(DIM,screenRows,screenCols,ch);
+		logicalCursor(DIM,screenRows,screenCols,&boardY,&boardX);
+		getyx(stdscr,oldY,oldX);
+		move(0,0);
+		printw("Logic board row: %i\n",boardY);
+		printw("Lobic board col: %i\n",boardX);
+		move(oldY,oldX);
+		printBoard(gameBoard,screenRows,screenCols);
 	}
 
 	ggpo();
