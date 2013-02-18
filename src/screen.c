@@ -29,7 +29,7 @@ int moveCursor(int dim, int screenRows, int screenCols, char key)
 	const int DIM = dim;
 	int currentRow,currentCol;
 	getyx(stdscr,currentRow,currentCol);
-	if((key == 'w') || (key == 3))
+	if((key == 'w') || (key == 3) || (key == 56))
 	{
 		if(currentRow > (screenRows/2)-(DIM/2))
 		{
@@ -38,7 +38,7 @@ int moveCursor(int dim, int screenRows, int screenCols, char key)
 			return 1;
 		}
 	}
-	else if((key == 'a') || (key == 4))
+	else if((key == 'a') || (key == 4) || (key == 52))
 	{
 		if(currentCol > (screenCols/2)-(((2*DIM)-1)/2))
 		{
@@ -47,7 +47,7 @@ int moveCursor(int dim, int screenRows, int screenCols, char key)
 			return 1;
 		}
 	}
-	else if((key == 's') || (key == 2))
+	else if((key == 's') || (key == 2) || (key == 50))
 	{
 		if(currentRow < (screenRows/2)-(DIM/2)+DIM-1)
 		{
@@ -56,7 +56,7 @@ int moveCursor(int dim, int screenRows, int screenCols, char key)
 			return 1;
 		}
 	}
-	else if((key == 'd') || (key == 5))
+	else if((key == 'd') || (key == 5) || (key == 54))
 	{
 		if(currentCol < (screenCols/2)-DIM+((DIM*2)-1))
 		{
@@ -65,7 +65,7 @@ int moveCursor(int dim, int screenRows, int screenCols, char key)
 			return 1;
 		}
 	}
-	else if((key == 'q') || (key == 7))
+	else if((key == 'q') || (key == 55))
 	{
 		if((currentCol > (screenCols/2)-((2*DIM)-1)/2) 
 			&& (currentRow > (screenRows/2)-(DIM/2)))		
@@ -86,7 +86,7 @@ int moveCursor(int dim, int screenRows, int screenCols, char key)
 		refresh();
 		return 1;
 	}
-	else if((key == 'e') || (key == 9))
+	else if((key == 'e') || (key == 57))
 	{
 		if ((currentRow > (screenRows/2)-(DIM/2))
 			&& (currentCol < (screenCols/2)-DIM+((DIM*2)-1)))
@@ -107,7 +107,7 @@ int moveCursor(int dim, int screenRows, int screenCols, char key)
 	refresh();
 	return 1;
 	}	
-	else if((key == 'z') || (key == 9))
+	else if((key == 'z') || (key == 49))
 	{
 		if((currentCol > (screenCols/2)-(((2*DIM)-1)/2))
 			&& (currentRow < (screenRows/2)-(DIM/2)+DIM-1))
@@ -129,7 +129,7 @@ int moveCursor(int dim, int screenRows, int screenCols, char key)
 	refresh();
 	return 1;
 	}
-	else if((key == 'c') || (key == 3))
+	else if((key == 'c') || (key == 51))
 	{
 		if((currentRow < (screenRows/2)-(DIM/2)+DIM-1)
 			&& (currentCol < (screenCols/2)-DIM+((DIM*2)-1)))
