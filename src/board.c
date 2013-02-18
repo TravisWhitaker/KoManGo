@@ -56,6 +56,8 @@ board initBoard(int dim)
 
 void printBoard(board a, int screenRows, int screenCols)
 {
+	int lastRow,lastCol;
+	getyx(stdscr,lastRow,lastCol);
 	const int DIM = a.DIM;
 	const int size = DIM*DIM;
 	int TLRow;
@@ -150,5 +152,6 @@ void printBoard(board a, int screenRows, int screenCols)
 		}
 		printw("\n");
 	}
+	move(lastRow,lastCol);
 	return;
 }

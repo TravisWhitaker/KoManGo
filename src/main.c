@@ -25,23 +25,20 @@ int main()
 
 	board gameBoard = initBoard(DIM);
 
-	for(register int i=0;i<(DIM*DIM);i++)
-	{
-		*(gameBoard.grid+i) = '1';
-	}
-
 	initScreen(screenRowsP,screenColsP);
+
+	printBoard(gameBoard,screenRows,screenCols);
+	homeCursor(DIM,screenRows,screenCols);
 
 	while(1)
 	{
 		getmaxyx(stdscr,*screenRowsP,*screenColsP);
-		printBoard(gameBoard,screenRows,screenCols);
 		char ch = getch();
 		if(ch == 'q')
 		{
 			break;
 		}
-		clear();
+		moveCursor(DIM,screenRows,screenCols,ch);
 	}
 
 	ggpo();
