@@ -65,7 +65,93 @@ int moveCursor(int dim, int screenRows, int screenCols, char key)
 			return 1;
 		}
 	}
+	else if((key == 'q') || (key == 7))
+	{
+		if((currentCol > (screenCols/2)-((2*DIM)-1)/2) 
+			&& (currentRow > (screenRows/2)-(DIM/2)))		
+		{		
+			move(currentRow-1,currentCol-2);
+		}
+		else
+		{
+			if(currentCol > (screenCols/2)-((2*DIM)-1)/2)
+			{
+				move(currentRow,currentCol-2);
+			}
+			else if (currentRow > (screenRows/2)-(DIM/2))
+			{
+				move(currentRow-1,currentCol);
+			}
+		}
+		refresh();
+		return 1;
+	}
+	else if((key == 'e') || (key == 9))
+	{
+		if ((currentRow > (screenRows/2)-(DIM/2))
+			&& (currentCol < (screenCols/2)-DIM+((DIM*2)-1)))
+		{
+			move(currentRow-1,currentCol+2);
+		}
+		else
+		{
+			if(currentCol < (screenCols/2)-DIM+((DIM*2)-1))
+			{	
+			move(currentRow,currentCol+2);
+			}
+			if(currentRow > (screenRows/2)-(DIM/2))
+			{
+			move(currentRow-1,currentCol);
+			}
+		}
+	refresh();
+	return 1;
+	}	
+	else if((key == 'z') || (key == 9))
+	{
+		if((currentCol > (screenCols/2)-(((2*DIM)-1)/2))
+			&& (currentRow < (screenRows/2)-(DIM/2)+DIM-1))
+		{
+			move(currentRow+1,currentCol-2);
+		}
+		else
+		{
+			if(currentCol > (screenCols/2)-(((2*DIM)-1)/2))
+			{
+				move(currentRow,currentCol-2);
+			}
+			if(currentRow < (screenRows/2)-(DIM/2)+DIM-1)
+			{
+				move(currentRow+1,currentCol);
+			}
+
+		}
+	refresh();
+	return 1;
+	}
+	else if((key == 'c') || (key == 3))
+	{
+		if((currentRow < (screenRows/2)-(DIM/2)+DIM-1)
+			&& (currentCol < (screenCols/2)-DIM+((DIM*2)-1)))
+		{
+			move(currentRow+1,currentCol+2);
+		}
+		else
+		{
+			if(currentRow < (screenRows/2)-(DIM/2)+DIM-1)
+			{
+				move(currentRow+1,currentCol);
+			}	
+			if(currentCol < (screenCols/2)-DIM+((DIM*2)-1))
+			{
+				move(currentRow,currentCol+2);
+			}
+		}
+	refresh();
+	return 1;
+	}	
 	return 0;
+
 }
 
 void ggpo()

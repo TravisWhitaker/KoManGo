@@ -44,7 +44,7 @@ int main()
 	{
 		getmaxyx(stdscr,*screenRowsP,*screenColsP);
 		char ch = getch();
-		if(ch == 'q')
+		if(ch == 27)
 		{
 			break;
 		}
@@ -59,7 +59,7 @@ int main()
 		logicalCursor(DIM,screenRows,screenCols,&boardY,&boardX);
 		getyx(stdscr,oldY,oldX);
 		move(0,0);
-		printw("Logic board row: %i\n",boardY);
+		printw("Lobic board row: %i\n",boardY);
 		printw("Lobic board col: %i\n",boardX);
 		move(oldY,oldX);
 		printBoard(gameBoard,screenRows,screenCols);
