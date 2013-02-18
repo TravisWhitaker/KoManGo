@@ -8,13 +8,13 @@
 #include <screen.h>
 #include <board.h>
 
-void initScreen()
+void initScreen(int* screenRowsP, int* screenColsP)
 {
 	initscr();
 	raw();
 	noecho();
 	keypad(stdscr,TRUE);
-	getmaxyx(stdscr,screenRows,screenCols);
+	getmaxyx(stdscr,*screenRowsP,*screenColsP);
 	return;
 }
 

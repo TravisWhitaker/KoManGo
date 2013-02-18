@@ -5,6 +5,8 @@
 
 int screenRows;
 int screenCols;
+int* screenRowsP;
+int* screenColsP;
 
 int DIM;
 board gameBoard;

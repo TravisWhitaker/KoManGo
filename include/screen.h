@@ -1,10 +1,7 @@
 #ifndef SCREEN
 #define SCREEN
 
-int screenrows;
-int screencols;
-
-void initScreen();
+void initScreen(int* screenRowsP, int* screenColsP);
 void ggpo();
 
 #endif

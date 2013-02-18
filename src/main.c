@@ -15,6 +15,10 @@ int main()
 
 	int screenRows;
 	int screenCols;
+	int *screenRowsP;
+	int *screenColsP;
+	screenRowsP = &screenRows;
+	screenColsP = &screenCols;
 
 	const int DIM = 19;
 
@@ -30,8 +34,10 @@ int main()
 	*(gameBoard.rows[2]+1) = '2';
 	*(gameBoard.rows[2]+2) = '1';
 
-	initScreen();
+	initScreen(screenRowsP,screenColsP);
 
+	printw("Rows: %i\n",screenRows);
+	printw("Cols: %i\n",screenCols);
 	printBoard(gameBoard);
 
 	getch();
