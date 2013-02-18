@@ -25,6 +25,8 @@ int main()
 
 	board gameBoard = initBoard(DIM);
 
+	*(gameBoard.rows[3]+3) = '1';
+
 	initScreen(screenRowsP,screenColsP);
 
 	printBoard(gameBoard,screenRows,screenCols);

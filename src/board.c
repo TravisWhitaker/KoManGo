@@ -110,6 +110,39 @@ void printBoard(board a, int screenRows, int screenCols)
 						printw("%s",B);
 					}
 				}
+				else if(i == 3 && j > 0 && j < 18 && DIM == 19)
+				{
+					if(j == 3 || j == 9 || j == 15)
+					{
+						printw("%s",STAR);
+					}
+					else
+					{
+						printw("%s",M);
+					}
+				}
+				else if(i == 9 && j > 0 && j < 18 && DIM == 19)
+				{
+					if(j == 3 || j == 9 || j == 15)
+					{
+						printw("%s",STAR);
+					}
+					else
+					{
+						printw("%s",M);
+					}
+				}
+				else if(i == 15 &&  j > 0 && j < 18 && DIM == 19)
+				{
+					if(j == 3 || j == 9 || j == 15)
+					{
+						printw("%s",STAR);
+					}
+					else
+					{
+						printw("%s",M);
+					}
+				}
 				else
 				{
 					if(j == 0)
