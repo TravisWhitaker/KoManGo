@@ -54,10 +54,22 @@ board initBoard(int dim)
 	return output;
 }
 
-void printBoard(board a)
+void printBoard(board a, int screenRows, int screenCols)
 {
 	const int DIM = a.DIM;
 	const int size = DIM*DIM;
+	int TLRow;
+	int TLCol;
+	if((screenRows < DIM*2) || (screenCols < DIM*2))
+	{
+		TLRow = 2;
+		TLCol = 2;
+	}
+	else
+	{
+		TLRow = (screenRows/2)-((DIM)/2);
+		TLCol = (screenCols/2)-(((2*DIM)-1)/2);
+	}
 	volatile register char spot;
 	for(register int i = 0; i<DIM; i++)
 	{
@@ -70,7 +82,7 @@ void printBoard(board a)
 				{
 					if(j == 0)
 					{
-						printw("%s",TL);
+						mvprintw(TLRow,TLCol,"%s",TL);
 					}
 					else if (j == (DIM-1))
 					{
@@ -85,7 +97,7 @@ void printBoard(board a)
 				{
 					if(j == 0)
 					{
-						printw("%s",BL);
+						mvprintw(TLRow+(DIM-1),TLCol,"%s",BL);
 					}
 					else if (j == (DIM-1))
 					{
@@ -100,7 +112,7 @@ void printBoard(board a)
 				{
 					if(j == 0)
 					{
-						printw("%s",L);
+						mvprintw(TLRow+i,TLCol,"%s",L);
 					}
 					else if(j == (DIM-1))
 					{
@@ -114,15 +126,15 @@ void printBoard(board a)
 			}
 			else if (spot == '1')
 			{
-				printw("%s",BLACK);
+				mvprintw(TLRow+i,TLCol+((2*j)),"%s",BLACK);
 			}
 			else if (spot == '2')
 			{
-				printw("%s",WHITE);
+				mvprintw(TLRow+i,TLCol+((2*j)),"%s",WHITE);
 			}
 			else
 			{
-				printw("%c","X");
+				mvprintw(TLRow+i,TLCol+((2*j)),"%c","X");
 			}
 			if(j < (DIM-1))
 			{

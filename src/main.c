@@ -24,23 +24,25 @@ int main()
 
 	board gameBoard = initBoard(DIM);
 
-	*(gameBoard.grid) = '1';
-	*(gameBoard.grid+1) = '2';
-	*(gameBoard.grid+2) = '1';
-	*(gameBoard.grid+19) = '2';
-	*(gameBoard.grid+20) = '1';
-	*(gameBoard.grid+21) = '2';
-	*(gameBoard.rows[2]) = '1';
-	*(gameBoard.rows[2]+1) = '2';
-	*(gameBoard.rows[2]+2) = '1';
+	for(register int i=0;i<(DIM*DIM);i++)
+	{
+		*(gameBoard.grid+i) = '1';
+	}
 
 	initScreen(screenRowsP,screenColsP);
 
-	printw("Rows: %i\n",screenRows);
-	printw("Cols: %i\n",screenCols);
-	printBoard(gameBoard);
+	while(1)
+	{
+		getmaxyx(stdscr,*screenRowsP,*screenColsP);
+		printBoard(gameBoard,screenRows,screenCols);
+		char ch = getch();
+		if(ch == 'q')
+		{
+			break;
+		}
+		clear();
+	}
 
-	getch();
 	ggpo();
 
 	return 0;

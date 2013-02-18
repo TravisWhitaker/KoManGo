@@ -22,7 +22,7 @@ char* BLACK;
 char* WHITE;
 char* STAR;
 
-board initBoard();
-void printBoard();
+board initBoard(int dim);
+void printBoard(board a, int screenRows, int screenCols);
 
 #endif
