@@ -24,48 +24,48 @@ void homeCursor(int DIM, int screenRows, int screenCols)
 	return;
 }
 
-void moveCursor(int dim, int screenRows, int screenCols, char key)
+int moveCursor(int dim, int screenRows, int screenCols, char key)
 {
 	const int DIM = dim;
 	int currentRow,currentCol;
 	getyx(stdscr,currentRow,currentCol);
-	if((key == 'w') || (key == KEY_UP))
+	if((key == 'w') || (key == 3))
 	{
 		if(currentRow > (screenRows/2)-(DIM/2))
 		{
 			move(currentRow-1,currentCol);
 			refresh();
-			return;
+			return 1;
 		}
 	}
-	else if((key == 'a') || (key == KEY_LEFT))
+	else if((key == 'a') || (key == 4))
 	{
 		if(currentCol > (screenCols/2)-(((2*DIM)-1)/2))
 		{
 			move(currentRow,currentCol-2);
 			refresh();
-			return;
+			return 1;
 		}
 	}
-	else if((key == 's') || (key == KEY_DOWN))
+	else if((key == 's') || (key == 2))
 	{
 		if(currentRow < (screenRows/2)-(DIM/2)+DIM)
 		{
 			move(currentRow+1,currentCol);
 			refresh();
-			return;
+			return 1;
 		}
 	}
-	else if((key == 'd') || (key == KEY_RIGHT))
+	else if((key == 'd') || (key == 5))
 	{
 		if(currentCol < (screenCols/2)-(((2+DIM)-1)/2)+DIM)
 		{
 			move(currentRow,currentCol+2);
 			refresh();
-			return;
+			return 1;
 		}
 	}
-	return;
+	return 0;
 }
 
 void ggpo()
