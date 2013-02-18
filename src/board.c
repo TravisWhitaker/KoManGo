@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <ncurses.h>
 
 #include <main.h>
 #include <board.h>
@@ -26,7 +27,7 @@ char *B =  "\u2534" ;
 char *BR =  "\u2518" ;
 char *DASH =  "\u2500" ;
 char *BLACK =  "\u25CF" ;
-char *WHITE =  "\u25CB" ;
+char *WHITE =  "\u25EF" ;
 char *STAR =  "\u2605" ;
 
 board initBoard(int dim)
@@ -69,99 +70,73 @@ void printBoard(board a)
 				{
 					if(j == 0)
 					{
-						printf("%s",TL);
+						printw("%s",TL);
 					}
 					else if (j == (DIM-1))
 					{
-						printf("%s",TR);
+						printw("%s",TR);
 					}
 					else
 					{
-						printf("%s",T);
+						printw("%s",T);
 					}
 				}
 				else if(i == (DIM-1))
 				{
 					if(j == 0)
 					{
-						printf("%s",BL);
+						printw("%s",BL);
 					}
 					else if (j == (DIM-1))
 					{
-						printf("%s",BR);
+						printw("%s",BR);
 					}
 					else
 					{
-						printf("%s",B);
+						printw("%s",B);
 					}
 				}
 				else
 				{
 					if(j == 0)
 					{
-						printf("%s",L);
+						printw("%s",L);
 					}
 					else if(j == (DIM-1))
 					{
-						printf("%s",R);
+						printw("%s",R);
 					}
 					else
 					{
-						printf("%s",M);
+						printw("%s",M);
 					}
 				}
 			}
 			else if (spot == '1')
 			{
-				printf("%s",BLACK);
+				printw("%s",BLACK);
 			}
 			else if (spot == '2')
 			{
-				printf("%s",WHITE);
+				printw("%s",WHITE);
 			}
 			else
 			{
-				printf("%c","X");
+				printw("%c","X");
 			}
 			if(j < (DIM-1))
 			{
-				printf("%s",DASH);
+				if((*(a.rows[i]+j)!='0') && (*(a.rows[i]+j+1)!='0'))
+				{
+					printw(" ");
+				}
+				else
+				{
+					printw("%s",DASH);
+				}
 			}
 		}
-		printf("\n");
+		printw("\n");
 	}
 	return;
 }
-
-/*
-void updatePrintBoard()
-{
-	for(int r = 0; r < DIM; r++)
-	{
-		for(int c = 0; c < 2*DIM-1; c++)
-		{
-			printableBoard[r][c] = DASH; //Initialize the return array with dashes
-		}
-	}
-
-	for(int r = 0; r < DIM; r++)
-	{
-		for(int c = 0; c < DIM; c++)	
-		{
-			printableBoard[r][c*2] = logicBoard[r][c]; //Populate the return array with values from board
-		}
-	}
-
-	return;
-}
-*/
-
-/*
-void printBoard()
-{
-	for(int r = 0;r < DIM;r++)
-	{
-		printf("%s\n",printableBoard[r])
-	}
-}
-*/

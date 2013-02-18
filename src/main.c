@@ -16,7 +16,23 @@ int main()
 	const int DIM = 19;
 
 	board gameBoard = initBoard(DIM);
+
+	*(gameBoard.grid) = '1';
+	*(gameBoard.grid+1) = '2';
+	*(gameBoard.grid+2) = '1';
+	*(gameBoard.grid+19) = '2';
+	*(gameBoard.grid+20) = '1';
+	*(gameBoard.grid+21) = '2';
+	*(gameBoard.rows[2]) = '1';
+	*(gameBoard.rows[2]+1) = '2';
+	*(gameBoard.rows[2]+2) = '1';
+
+	initScreen();
+
 	printBoard(gameBoard);
+
+	getch();
+	ggpo();
 
 	return 0;
 }
