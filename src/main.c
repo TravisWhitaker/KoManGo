@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ncursesw/ncurses.h>
+#include <ncurses.h>
 #include <locale.h>
 
 #include <screen.h>
