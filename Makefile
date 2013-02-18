@@ -1,5 +1,5 @@
 CC = clang
-CFLAGS = -lncurses
+CFLAGS = -lncursesw
 SOURCE = $(wildcard src/*.c)
 INCLUDE = -I./include
 OUT = -o

@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <ncurses.h>
+#include <ncursesw/ncurses.h>
 
 #include <main.h>
 #include <board.h>

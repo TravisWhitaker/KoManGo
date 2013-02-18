@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ncurses.h>
-#include <wchar.h>
+#include <ncursesw/ncurses.h>
+#include <locale.h>
 
 #include <screen.h>
 #include <board.h>
@@ -10,6 +10,9 @@
 
 int main()
 {
+
+	setlocale(LC_ALL,"");
+
 	int screenRows;
 	int screenCols;
 
