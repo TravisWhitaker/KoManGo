@@ -154,6 +154,26 @@ int moveCursor(int dim, int screenRows, int screenCols, char key)
 
 }
 
+int queryUserDIM()
+{
+	char userSays[3];
+	printf("Dear Sir or Madame,\nPardon the interruption, but how large would you like one side of the board to be?\n");
+	fgets(userSays,3,stdin);
+	int DIM  = atoi(userSays);
+	if(DIM > 50)
+	{
+		printf("I'm terribly sorry, but I'm afraid I just can't make the board that large. If you'll please excuse me we must part company now...\n");
+		return 0;
+	}
+	else if(DIM < 3)
+	{
+		printf("I'm terribly sorry, but I'm afraid I just can't make the board that small. If you'll please excuse me we must part company now...\n");
+		return 0;
+	}
+	return DIM;
+}
+
+
 void ggpo()
 {
 	endwin();

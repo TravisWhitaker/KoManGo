@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <ncurses.h>
+#include <signal.h>
 
 #include <locale.h>
 
@@ -9,6 +9,7 @@
 #include <board.h>
 #include <main.h>
 
+volatile char RESIZE_FLAG = 'F';
 
 int main()
 {
@@ -22,7 +23,11 @@ int main()
 	screenRowsP = &screenRows;
 	screenColsP = &screenCols; //Make pointers to these so other functions can update them.
 
-	const int DIM = 19;
+	const int DIM = queryUserDIM();
+	if(DIM == 0)
+	{
+		return 0;
+	}
 
 	board gameBoard = initBoard(DIM);
 

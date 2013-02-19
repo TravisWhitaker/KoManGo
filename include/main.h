@@ -3,6 +3,8 @@
 
 #include <board.h>
 
+volatile char RESIZE_FLAG;
+
 int screenRows;
 int screenCols;
 int* screenRowsP;
