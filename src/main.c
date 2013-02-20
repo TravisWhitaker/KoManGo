@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <ncurses.h>
 
 #include <locale.h>
@@ -8,7 +7,6 @@
 #include <screen.h>
 #include <board.h>
 #include <main.h>
-
 
 int main()
 {
@@ -22,74 +20,35 @@ int main()
 	screenRowsP = &screenRows;
 	screenColsP = &screenCols; //Make pointers to these so other functions can update them.
 
-	const int DIM = 19;
+	const int DIM = queryUserDIM(); //Politely ask the user how large they'd like the board to be.
+	if(DIM == 0)
+	{
+		return 0;
+	}
 
-	board gameBoard = initBoard(DIM);
+	board gameBoard = initBoard(DIM); //Initialize the board.
 
-	// *(gameBoard.rows[3]+3) = '1';
+	*(gameBoard.rows[3]+3) = '1'; //Harcode this for now.
 
 	initScreen(screenRowsP,screenColsP);
 
 	printBoard(gameBoard,screenRows,screenCols);
 	homeCursor(DIM,screenRows,screenCols);
 
-	int boardX;
-	int boardY;
-	int oldX;
-	int oldY;
-	unsigned long int hash;
+	char ch;
 
-	logicalCursor(DIM,screenRows,screenCols,&boardX,&boardY);
-	int turn = 1;
 	while(1)
 	{
-		getmaxyx(stdscr,*screenRowsP,*screenColsP);
-		char ch = getch();
-		if(ch == 'o')
-		{
-			clearBoard(gameBoard);
-
-		}
+		ch = getch();
 		if(ch == 27)
 		{
 			break;
 		}
-		if(ch == 'r')
+		else if(moveCursor(DIM,screenRows,screenCols,ch) == 1);
+		else
 		{
-			getyx(stdscr,oldY,oldX);
-			clear();
-			printBoard(gameBoard,screenRows,screenCols);
-			move(oldY,oldX);
+			resize(gameBoard,DIM,screenRowsP,screenColsP);
 		}
-		moveCursor(DIM,screenRows,screenCols,ch);
-		logicalCursor(DIM,screenRows,screenCols,&boardY,&boardX);
-		getyx(stdscr,oldY,oldX);
-		move(0,0);
-		printw("Lobic board row: %i\n",boardY);
-		printw("Lobic board col: %i\n",boardX);
-		move(oldY,oldX);
-		if(ch == 'p')
-		{
-			if(turn == 1)
-			{
-				*(gameBoard.rows[boardY]+boardX) = '1';
-				turn = 2;
-			}
-			else
-			{
-				*(gameBoard.rows[boardY]+boardX) = '2';	
-				turn = 1;
-			}
-
-		}
-
-		printBoard(gameBoard,screenRows,screenCols);
-		getyx(stdscr,oldY,oldX);
-		move(2,0);
-		hash = hashbrowns(gameBoard);
-		// printw("Hash: %i",hash);
-		// printw("                ");
-		move(oldY,oldX);
 	}
 
 	ggpo();
