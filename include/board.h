@@ -25,7 +25,6 @@ char* STAR;
 board initBoard(int dim);
 void logicalCursor(int dim, int screenRows, int screenCols, int* boardRow, int* boardCol);
 void printBoard(board a, int screenRows, int screenCols);
-void clearBoard(board b);
-unsigned long int hashbrowns(board b);
+int clearBoard(board b, int ch);
 
 #endif

@@ -165,6 +165,18 @@ void resize(board gameBoard, int DIM, int* screenRows, int* screenCols)
 	return;
 }
 
+void redraw(board gameBoard,int screenRows,int screenCols)
+{
+	int DIM,cursorRow,cursorCol;
+	DIM = gameBoard.DIM;
+	getyx(stdscr,cursorRow,cursorCol);
+	clear();
+	printBoard(gameBoard,screenRows,screenCols);
+	move(cursorRow,cursorCol);
+	refresh();
+	return;
+}
+
 int queryUserDIM()
 {
 	char userSays[3];

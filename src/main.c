@@ -45,10 +45,13 @@ int main()
 			break;
 		}
 		else if(moveCursor(DIM,screenRows,screenCols,ch) == 1);
-		else
+		else if(clearBoard(gameBoard,ch) == 1);
+		else if(ch == -102)
 		{
 			resize(gameBoard,DIM,screenRowsP,screenColsP);
+			continue;
 		}
+		redraw(gameBoard,screenRows,screenCols);
 	}
 
 	ggpo();
