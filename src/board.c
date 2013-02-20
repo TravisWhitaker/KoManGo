@@ -177,7 +177,11 @@ void printBoard(board a, int screenRows, int screenCols)
 			}
 			else if (spot == '2')
 			{
-				mvprintw(TLRow+i,TLCol+((2*j)),"%s",WHITE);
+				attroff(COLOR_PAIR(1));
+				attron(COLOR_PAIR(2));
+				mvprintw(TLRow+i,TLCol+((2*j)),"%s",BLACK);
+				attroff(COLOR_PAIR(2));
+				attron(COLOR_PAIR(1));
 			}
 			else
 			{

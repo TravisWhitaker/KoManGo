@@ -13,6 +13,14 @@ void initScreen(int* screenRowsP, int* screenColsP)
 	raw();
 	noecho();
 	keypad(stdscr,TRUE);
+	start_color();
+	if(init_color(COLOR_YELLOW,1000,650,560) == ERR)
+	{
+		printw("NOOOOOOOOOOOOOOOOOOOOOOOOOOO\n");
+	}
+	init_pair(1,COLOR_BLACK,COLOR_YELLOW);
+	init_pair(2,COLOR_WHITE,COLOR_YELLOW);
+	attron(COLOR_PAIR(1));
 	getmaxyx(stdscr,*screenRowsP,*screenColsP);
 	return;
 }
