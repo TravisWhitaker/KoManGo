@@ -35,8 +35,8 @@ int moveCursor(int dim, int screenRows, int screenCols, char key)
 		{
 			move(currentRow-1,currentCol);
 			refresh();
-			return 1;
 		}
+		return 1;
 	}
 	else if((key == 'a') || (key == 4) || (key == 52))
 	{
@@ -44,8 +44,8 @@ int moveCursor(int dim, int screenRows, int screenCols, char key)
 		{
 			move(currentRow,currentCol-2);
 			refresh();
-			return 1;
 		}
+		return 1;
 	}
 	else if((key == 's') || (key == 2) || (key == 50))
 	{
@@ -53,8 +53,8 @@ int moveCursor(int dim, int screenRows, int screenCols, char key)
 		{
 			move(currentRow+1,currentCol);
 			refresh();
-			return 1;
 		}
+		return 1;
 	}
 	else if((key == 'd') || (key == 5) || (key == 54))
 	{
@@ -62,8 +62,8 @@ int moveCursor(int dim, int screenRows, int screenCols, char key)
 		{
 			move(currentRow,currentCol+2);
 			refresh();
-			return 1;
 		}
+		return 1;
 	}
 	else if((key == 'q') || (key == 55))
 	{
@@ -104,8 +104,8 @@ int moveCursor(int dim, int screenRows, int screenCols, char key)
 			move(currentRow-1,currentCol);
 			}
 		}
-	refresh();
-	return 1;
+		refresh();
+		return 1;
 	}	
 	else if((key == 'z') || (key == 49))
 	{
@@ -124,10 +124,9 @@ int moveCursor(int dim, int screenRows, int screenCols, char key)
 			{
 				move(currentRow+1,currentCol);
 			}
-
 		}
-	refresh();
-	return 1;
+		refresh();
+		return 1;
 	}
 	else if((key == 'c') || (key == 51))
 	{
@@ -147,11 +146,23 @@ int moveCursor(int dim, int screenRows, int screenCols, char key)
 				move(currentRow,currentCol+2);
 			}
 		}
-	refresh();
-	return 1;
+		refresh();
+		return 1;
 	}	
 	return 0;
+}
 
+void resize(board gameBoard, int DIM, int* screenRows, int* screenCols)
+{
+	int newScreenRows,newScreenCols,boardRow,boardCol,newCursorRow,newCursorCol;
+	getmaxyx(stdscr,newScreenRows,newScreenCols);
+	clear();
+	refresh();
+	printBoard(gameBoard,newScreenRows,newScreenCols);
+	move((newScreenRows/2)-((DIM)/2),(newScreenCols/2)-(((2*DIM)-1)/2));
+	*screenRows = newScreenRows;
+	*screenCols = newScreenCols;
+	return;
 }
 
 int queryUserDIM()
@@ -164,6 +175,10 @@ int queryUserDIM()
 	{
 		printf("I'm terribly sorry, but I'm afraid I just can't make the board that large. If you'll please excuse me we must part company now...\n");
 		return 0;
+	}
+	else if (DIM == 0)
+	{
+		return 19;
 	}
 	else if(DIM < 3)
 	{

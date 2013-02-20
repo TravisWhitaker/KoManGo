@@ -66,13 +66,11 @@ void logicalCursor(int dim, int screenRows, int screenCols, int* boardRow, int* 
 
 void printBoard(board a, int screenRows, int screenCols)
 {
-	int lastRow,lastCol;
-	getyx(stdscr,lastRow,lastCol);
 	const int DIM = a.DIM;
 	const int size = DIM*DIM;
-	const int TLRow = (screenRows/2)-((DIM)/2);
-	const int TLCol = (screenCols/2)-(((2*DIM)-1)/2);
-	volatile register char spot;
+	int TLRow = (screenRows/2)-((DIM)/2);
+	int TLCol = (screenCols/2)-(((2*DIM)-1)/2);
+	register char spot;
 	for(register int i = 0; i<DIM; i++)
 	{
 		for(register int j = 0; j<DIM; j++)
@@ -185,6 +183,5 @@ void printBoard(board a, int screenRows, int screenCols)
 		}
 		printw("\n");
 	}
-	move(lastRow,lastCol);
 	return;
 }
