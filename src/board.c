@@ -40,7 +40,7 @@ board initBoard(int dim)
 	output.grid = malloc((sizeof(char)*size)); //Allocate the memory for the grid.
 	if(output.grid == NULL) //Check to see if the allocation failed.
 	{
-		printf("Malloc failed, ya bimboooo.\n");
+		printf("I'm terribly sorry, but I'm afraid you haven't the free memory to run this game.\n");
 		exit(0);
 	}
 	for(register int i=0; i<size; i++) //Fill the grid with zeros.
