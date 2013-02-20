@@ -26,7 +26,7 @@ int main()
 
 	board gameBoard = initBoard(DIM);
 
-	*(gameBoard.rows[3]+3) = '1';
+	// *(gameBoard.rows[3]+3) = '1';
 
 	initScreen(screenRowsP,screenColsP);
 
@@ -37,13 +37,19 @@ int main()
 	int boardY;
 	int oldX;
 	int oldY;
+	unsigned long int hash;
 
 	logicalCursor(DIM,screenRows,screenCols,&boardX,&boardY);
-
+	int turn = 1;
 	while(1)
 	{
 		getmaxyx(stdscr,*screenRowsP,*screenColsP);
 		char ch = getch();
+		if(ch == 'o')
+		{
+			clearBoard(gameBoard);
+
+		}
 		if(ch == 27)
 		{
 			break;
@@ -62,7 +68,28 @@ int main()
 		printw("Lobic board row: %i\n",boardY);
 		printw("Lobic board col: %i\n",boardX);
 		move(oldY,oldX);
+		if(ch == 'p')
+		{
+			if(turn == 1)
+			{
+				*(gameBoard.rows[boardY]+boardX) = '1';
+				turn = 2;
+			}
+			else
+			{
+				*(gameBoard.rows[boardY]+boardX) = '2';	
+				turn = 1;
+			}
+
+		}
+
 		printBoard(gameBoard,screenRows,screenCols);
+		getyx(stdscr,oldY,oldX);
+		move(2,0);
+		hash = hashbrowns(gameBoard);
+		// printw("Hash: %i",hash);
+		// printw("                ");
+		move(oldY,oldX);
 	}
 
 	ggpo();

@@ -5,6 +5,7 @@
 #include <main.h>
 #include <board.h>
 #include <screen.h>
+#include <math.h>
 
 /*
 ┌─┬─┐   TL T TR
@@ -64,6 +65,38 @@ void logicalCursor(int dim, int screenRows, int screenCols, int* boardRow, int* 
 	return;
 }
 
+unsigned long int hashbrowns(board b)
+{
+	const int DIM = b.DIM;
+	const int SIZE = DIM*DIM;
+	unsigned long int output = 0;
+	int spot;
+	for(register int i = 0; i<SIZE; i++)
+	{
+		spot = *(b.grid+i);
+		if(spot == '1')
+		{
+			// printw("poop");
+			output += pow(3,i);
+			// printw("%i",output);
+		}
+		if(spot == '2')
+		{
+			// printw("pee");
+			output += 2*pow(3,i);
+			// printw("%i",output);
+		}
+ 	}
+ 	return output;
+}
+void clearBoard(board b)
+{
+	for(int i = 0; i < b.DIM*b.DIM; i++)
+	{
+		*(b.grid+i) = '0';
+	}
+	return;
+}
 void printBoard(board a, int screenRows, int screenCols)
 {
 	int lastRow,lastCol;
