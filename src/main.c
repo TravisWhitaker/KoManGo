@@ -24,16 +24,13 @@ int main(int argc,char *argv[])
 	if(argc > 1)
 	{
 		int DIMinput = atoi(argv[1]);
-		if(DIMinput > 0 && DIMinput <= 19)
+		if(DIMinput > 5 && DIMinput <= 19)
 		{
 			DIM = DIMinput;
 		}
 	}
 
 	board gameBoard = initBoard(DIM); //Initialize the board.
-
-	*(gameBoard.rows[3]+3) = '1'; //Harcode this for now.
-	*(gameBoard.rows[3]+4) = '2';
 
 	initScreen(screenRowsP,screenColsP);
 
