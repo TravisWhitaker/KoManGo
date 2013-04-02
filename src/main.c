@@ -8,7 +8,7 @@
 #include <board.h>
 #include <main.h>
 
-int main()
+int main(int argc,char *argv[])
 {
 
 	setlocale(LC_ALL,""); //This makes Unicode work.
@@ -20,10 +20,14 @@ int main()
 	screenRowsP = &screenRows;
 	screenColsP = &screenCols; //Make pointers to these so other functions can update them.
 
-	const int DIM = queryUserDIM(); //Politely ask the user how large they'd like the board to be.
-	if(DIM == 0)
+	int DIM = 19;
+	if(argc > 1)
 	{
-		return 0;
+		int DIMinput = atoi(argv[1]);
+		if(DIMinput > 0 && DIMinput <= 19)
+		{
+			DIM = DIMinput;
+		}
 	}
 
 	board gameBoard = initBoard(DIM); //Initialize the board.
