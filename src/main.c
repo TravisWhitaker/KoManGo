@@ -24,6 +24,11 @@ int main(int argc,char *argv[])
 	if(argc > 1)
 	{
 		int DIMinput = atoi(argv[1]);
+		if(DIMinput == 0)
+		{
+			printf("Unknown argument %s, provide an integer board size.\n",argv[1]);
+			return 0;
+		}
 		if(DIMinput > 5 && DIMinput <= 19)
 		{
 			DIM = DIMinput;
